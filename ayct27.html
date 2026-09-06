@@ -13,18 +13,19 @@
   <div class="container nav-inner">
     <a href="index.html#top" class="logo"><img src="ayctlogo.png" alt="Amaze Youth Chess Tournament 2026 logo" class="nav-logo"></a>
     <ul id="nav-links" class="nav-links">
+      <li><a href="index.html#top">home</a></li>
       <li><a href="index.html#about">about</a></li>
       <li><a href="index.html#organizers">organizers</a></li>
       <li><a href="index.html#champions">champions</a></li>
       <li><a href="index.html#venue">venue</a></li>
       <li><a href="index.html#gallery">gallery</a></li>
     </ul>
-    <a href="ayct27.html" class="m-btn-outline nav-cta nav-cta--highlight">ayct 27 <span class="nav-cta__dot" aria-hidden="true"></span></a>
+    <a href="index.html#top" class="m-btn-outline nav-cta">ayct 26</a>
     <button type="button" class="nav-toggle" aria-label="Menu Open" aria-controls="nav-links" aria-expanded="false">☰</button>
   </div>
 </nav>
 
-<section class="a27-hero">
+<section class="a27-hero" id="top">
   <div class="a27-hero__glow" aria-hidden="true"></div>
   <div class="a27-hero__pieces" aria-hidden="true">
     <span class="a27-hero__piece a27-hero__piece--1">♔</span>
@@ -37,7 +38,7 @@
     <span class="ayct27-badge"><span class="ayct27-badge__dot" aria-hidden="true"></span>next edition · 2027</span>
     <p class="m-label vis-eyebrow">// the piece worth protecting</p>
     <h1 class="m-hero" data-motion="reveal-up">AYCT 27 is Coming</h1>
-    <p class="vis-lede text-muted" data-motion="reveal-up">The board resets, but the standard doesn't. A new city, a new venue, and another open season of merit-only chess for every school, college, and university student in Bangladesh — no age brackets, no gender brackets, just the moves in front of you.</p>
+    <p class="vis-lede" data-motion="reveal-up">The board resets, but the standard doesn't. A new city, a new venue, and another open season of merit-only chess for every school, college, and university student in Bangladesh — no age brackets, no gender brackets, just the moves in front of you.</p>
     <div class="ayct27-cta-row" data-motion="reveal-up">
       <a href="#register" class="m-btn" data-motion="button-circle-arrow">register your interest</a>
       <a href="#contact" class="m-btn-outline">contact the team</a>
@@ -104,17 +105,18 @@
     </div>
     <h2 class="m-heading mb" data-motion="reveal-up">Register Your Interest</h2>
     <p class="text-muted mb" data-motion="reveal-up">Leave your details below and Amaze Consortium will reach out the moment AYCT 27's venue and dates are confirmed — no commitment, no fee, just first access to registration.</p>
-    <div class="m-card a27-form-card" data-motion="reveal-up">
-      <div class="a27-form-frame-wrap">
-        <!--
-          Replace the src below with your published Google Form's embed URL.
-          In Google Forms: Send → the "<>" embed tab → copy the src of the
-          provided <iframe> and paste it here.
-        -->
-        <iframe src="https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_FORM_ID/viewform?embedded=true" title="AYCT 27 interest form" loading="lazy">Loading…</iframe>
+    <form class="m-card a27-form-card" id="a27-interest-form" data-motion="reveal-up">
+      <div class="a27-form-fields">
+        <label for="interest-name">name</label>
+        <input class="m-input" id="interest-name" name="name" type="text" autocomplete="name" required>
+        <label for="interest-email">email</label>
+        <input class="m-input" id="interest-email" name="email" type="email" autocomplete="email" required>
+        <label for="interest-institution">school, college, or university</label>
+        <input class="m-input" id="interest-institution" name="institution" type="text" autocomplete="organization">
+        <button class="m-btn" type="submit">send interest</button>
       </div>
-      <p class="a27-form-fallback">Form not loading? <a href="https://forms.google.com" target="_blank" rel="noopener" class="m-link">open it directly</a> or email us instead.</p>
-    </div>
+      <p class="a27-form-fallback">Your email app will open with the details addressed to <a href="mailto:pr@amazeconsortium.org" class="m-link">pr@amazeconsortium.org</a>.</p>
+    </form>
   </div>
 </section>
 
@@ -157,7 +159,7 @@
   </div>
 </section>
 
-<footer data-section="footer" class="m-footer">
+<footer data-section="footer" class="m-footer" id="section11" data-generated-section="section11">
   <div class="container section11-inner">
     <div class="section11-top section11-top--3col">
       <div class="section11-brand section11-cell">
@@ -170,6 +172,7 @@
       <nav class="section11-col section11-cell" aria-label="Site">
         <h4 class="m-label section11-col-title">Links</h4>
         <ul class="section11-links">
+          <li><a href="#top" class="section11-link">back to top</a></li>
           <li><a href="index.html#about" class="section11-link">about ayct 26</a></li>
           <li><a href="index.html#champions" class="section11-link">champions</a></li>
           <li><a href="#details" class="section11-link">what's next</a></li>
@@ -186,7 +189,7 @@
       </nav>
     </div>
     <div class="section11-bottom">
-      <p class="m-caption section11-copy">© 2026 Amaze Consortium. all rights reserved.</p>
+      <p class="m-caption section11-copy">© 2026–2027 Amaze Consortium. all rights reserved.</p>
     </div>
   </div>
 </footer>

@@ -5,6 +5,9 @@
   if (typeof window.Lenis === 'function' && !window.__appLenis) {
     var lenis = new window.Lenis();
     window.__appLenis = lenis;
+    /* Lenis now owns smooth scrolling — disable the native CSS smooth
+       scroll so the two don't fight and double-smooth the page. */
+    document.documentElement.style.scrollBehavior = 'auto';
     if (window.gsap && window.ScrollTrigger) {
       lenis.on('scroll', window.ScrollTrigger.update);
       window.gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
@@ -13,10 +16,40 @@
       var raf = function(time){ lenis.raf(time); requestAnimationFrame(raf); };
       requestAnimationFrame(raf);
     }
+    /* Route same-page hash-link clicks through Lenis so anchor jumps stay
+       smooth and consistent with scroll-driven animations. */
+    document.addEventListener('click', function(e){
+      var a = e.target.closest && e.target.closest('a[href*="#"]');
+      if (!a) return;
+      var url;
+      try { url = new URL(a.getAttribute('href'), window.location.href); } catch (err) { return; }
+      if (url.pathname !== window.location.pathname || !url.hash) return;
+      var target;
+      try { target = document.querySelector(url.hash); } catch (err) { return; }
+      if (!target) return;
+      e.preventDefault();
+      lenis.scrollTo(target);
+    });
   }
 })();
 
 (function(){var t=document.querySelector('.nav-toggle');var l=document.getElementById('nav-links');if(!t||!l)return;function setOpen(o){t.setAttribute('aria-expanded',o?'true':'false');t.setAttribute('aria-label',o?'Close menu':'Open menu');t.textContent=o?'\u2715':'\u2630';l.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''}t.addEventListener('click',function(){setOpen(t.getAttribute('aria-expanded')!=='true')});l.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){setOpen(false)})});window.addEventListener('resize',function(){if(window.innerWidth>768)setOpen(false)})})();
+
+(function () {
+  var form = document.getElementById('a27-interest-form');
+  if (!form) return;
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    var data = new FormData(form);
+    var subject = encodeURIComponent('AYCT 27 registration interest');
+    var body = encodeURIComponent([
+      'Name: ' + data.get('name'),
+      'Email: ' + data.get('email'),
+      'Institution: ' + (data.get('institution') || 'Not provided')
+    ].join('\n'));
+    window.location.href = 'mailto:pr@amazeconsortium.org?subject=' + subject + '&body=' + body;
+  });
+})();
 
 /* snippet: header.center-stack-reveal */
 document.querySelectorAll('[data-snippet="header.center-stack-reveal"]').forEach((root) => {
