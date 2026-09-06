@@ -879,8 +879,77 @@
 .ayct-cta-card{max-width:44rem;margin:0 auto;padding:var(--gap-lg) var(--gap);text-align:center;display:flex;flex-direction:column;align-items:center;gap:var(--gap-sm)}
 .ayct-cta-card .ayct-marker{justify-content:center}
 .ayct-cta-note{color:var(--color-muted);font-size:var(--text-small);margin-top:.25rem}
-.ayct27-cta-row{display:flex;flex-direction:column;align-items:center;gap:.5rem;margin-top:var(--gap-sm)}
+.ayct27-cta-row{display:flex;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:center;gap:.75rem;margin-top:var(--gap-sm)}
+@media (max-width:560px){.ayct27-cta-row{flex-direction:column}}
 
 .section11-top--3col{grid-template-columns:1.7fr 1fr 1fr}
 @media (max-width:900px){.section11-top--3col{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.section11-top--3col{grid-template-columns:1fr}}
+
+/* ===================================================================
+   AYCT 27 spotlight — highlight card, nav badge, motion graphics
+   =================================================================== */
+
+.nav-cta--highlight{position:relative}
+.nav-cta__dot{display:inline-block;width:.4rem;height:.4rem;margin-left:.35rem;border-radius:999px;background:var(--color-accent);vertical-align:middle;animation:ayct27-blink 1.7s ease-in-out infinite}
+
+.ayct27-spotlight{position:relative;overflow:hidden;isolation:isolate}
+.ayct27-spotlight__glow{position:absolute;inset:-15%;z-index:0;pointer-events:none;filter:blur(60px);background:radial-gradient(42% 42% at 50% 32%,rgba(255,255,255,0.14) 0%,rgba(255,255,255,0.05) 40%,transparent 72%);animation:ayct27-pulse 7s ease-in-out infinite}
+.ayct27-spotlight__pieces{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.ayct27-piece{position:absolute;font-size:3.25rem;color:rgba(255,255,255,0.05);line-height:1;animation:ayct27-float 15s ease-in-out infinite}
+.ayct27-piece--1{top:10%;left:6%;animation-duration:17s}
+.ayct27-piece--2{bottom:8%;right:8%;font-size:4.5rem;animation-duration:21s;animation-delay:-5s}
+.ayct27-piece--3{top:58%;left:85%;font-size:2.5rem;animation-duration:13s;animation-delay:-9s}
+@media (max-width:768px){.ayct27-piece--2,.ayct27-piece--3{display:none}}
+
+.ayct-cta-card--spotlight{position:relative;z-index:1;max-width:46rem;border:1px solid var(--color-border);border-radius:calc(var(--radius) + 12px);padding:calc(var(--gap-lg) * 0.85) var(--gap);background:linear-gradient(180deg,rgba(255,255,255,0.035),rgba(255,255,255,0) 65%)}
+.ayct-cta-card--spotlight::before{content:'';position:absolute;inset:-1px;z-index:-1;border-radius:inherit;padding:1px;background:conic-gradient(from var(--ayct27-angle,0deg),var(--color-accent) 0deg,transparent 40deg,transparent 320deg,var(--color-accent) 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:ayct27-spin 5s linear infinite}
+
+.ayct27-badge{position:relative;z-index:1;display:inline-flex;align-items:center;gap:.5rem;font-family:'Geist Mono',monospace;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;padding:.4rem .85rem;border-radius:999px;border:1px solid var(--color-border);background:rgba(255,255,255,0.045);color:var(--color-muted);margin-bottom:var(--gap-sm)}
+.ayct27-badge__dot{width:.4rem;height:.4rem;border-radius:999px;background:var(--color-accent);animation:ayct27-blink 1.7s ease-in-out infinite}
+
+@property --ayct27-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes ayct27-spin{to{--ayct27-angle:360deg}}
+@keyframes ayct27-pulse{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes ayct27-float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-26px) rotate(9deg)}}
+@keyframes ayct27-blink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(199,205,214,0.45)}50%{opacity:.35;box-shadow:0 0 0 7px rgba(199,205,214,0)}}
+
+@media (prefers-reduced-motion: reduce){
+  .nav-cta__dot,.ayct27-spotlight__glow,.ayct27-piece,.ayct-cta-card--spotlight::before,.ayct27-badge__dot,.a27-hero__piece,.a27-hero__glow{animation:none !important}
+}
+
+/* ===================================================================
+   AYCT 27 dedicated page — hero motion graphics, form, contact
+   =================================================================== */
+
+.a27-hero{position:relative;overflow:hidden;isolation:isolate;padding:calc(var(--section-padding) + 3rem) var(--container-padding) var(--section-padding);text-align:center;min-height:70vh;display:flex;align-items:center;justify-content:center}
+.a27-hero__glow{position:absolute;inset:-20%;z-index:0;pointer-events:none;filter:blur(70px);background:radial-gradient(45% 45% at 50% 30%,rgba(255,255,255,0.16) 0%,rgba(255,255,255,0.04) 45%,transparent 75%);animation:ayct27-pulse 8s ease-in-out infinite}
+.a27-hero__pieces{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.a27-hero__piece{position:absolute;color:rgba(255,255,255,0.055);line-height:1;animation:ayct27-float 16s ease-in-out infinite}
+.a27-hero__piece--1{top:14%;left:10%;font-size:5rem;animation-duration:18s}
+.a27-hero__piece--2{bottom:12%;right:12%;font-size:6rem;animation-duration:22s;animation-delay:-6s}
+.a27-hero__piece--3{top:20%;right:18%;font-size:3rem;animation-duration:14s;animation-delay:-3s}
+.a27-hero__piece--4{bottom:18%;left:16%;font-size:3.5rem;animation-duration:19s;animation-delay:-10s}
+@media (max-width:768px){.a27-hero__piece--2,.a27-hero__piece--3,.a27-hero__piece--4{display:none}}
+.a27-hero__inner{position:relative;z-index:1;max-width:42rem;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:var(--gap-sm)}
+.a27-hero__back{align-self:flex-start;margin-bottom:var(--gap-sm);color:var(--color-muted);font-family:'Geist Mono',monospace;font-size:var(--text-small)}
+.a27-hero__stats{margin-top:var(--gap)}
+
+.a27-section{padding:var(--section-padding) var(--container-padding)}
+.a27-section .container{max-width:48rem}
+.a27-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap)}
+@media (max-width:768px){.a27-grid{grid-template-columns:1fr}}
+
+.a27-form-card{position:relative;text-align:center;padding:var(--gap-lg) var(--gap);display:flex;flex-direction:column;align-items:center;gap:var(--gap-sm)}
+.a27-form-frame-wrap{width:100%;border-radius:var(--radius);overflow:hidden;border:1px solid var(--color-border);background:var(--color-bg)}
+.a27-form-frame-wrap iframe{width:100%;min-height:640px;border:0;display:block}
+.a27-form-fallback{font-size:var(--text-small);color:var(--color-muted)}
+
+.a27-contact-card{display:flex;flex-direction:column;gap:.4rem;align-items:flex-start;text-align:left}
+.a27-contact-card__icon{width:2.5rem;height:2.5rem;border-radius:999px;background:rgba(255,255,255,0.05);border:1px solid var(--color-border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;margin-bottom:.5rem}
+
+.a27-timeline{display:flex;flex-direction:column;gap:0}
+.a27-timeline__item{display:flex;gap:var(--gap-sm);padding:var(--gap-sm) 0;border-top:1px solid var(--color-border)}
+.a27-timeline__dot{flex:0 0 auto;width:.6rem;height:.6rem;border-radius:999px;background:var(--color-accent);margin-top:.4rem}
+.a27-timeline__body h4{margin-bottom:.25rem}
+.a27-timeline__body p{color:var(--color-muted);font-size:var(--text-small)}
